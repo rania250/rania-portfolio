@@ -7,8 +7,9 @@ import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Temporarily remove base for local development
-  // base: "/Portfolio/",
+  // base must match the repository name when deploying to GitHub Pages
+  // If your repo is https://<user>.github.io/Portfolio set base to '/Portfolio/'
+  base: "/",
   plugins: [vue(), vueJsx(), vueDevTools()],
   resolve: {
     alias: {

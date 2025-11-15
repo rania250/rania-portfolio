@@ -7,19 +7,15 @@
       </div>
 
       <div class="skills-grid">
-        <div
-          v-for="(category, index) in skillsCategories"
-          :key="index"
-          class="skill-category card"
-        >
+        <div v-for="(category, index) in skillsCategories" :key="index" class="skill-category card">
           <div class="category-icon">
             <component :is="category.icon" />
           </div>
           <h3 class="category-title">{{ category.title }}</h3>
           <div class="skills-list">
-            <div
-              v-for="skill in category.skills"
-              :key="skill.name"
+            <div 
+              v-for="skill in category.skills" 
+              :key="skill.name" 
               class="skill-item"
             >
               <div class="skill-info">
@@ -27,8 +23,8 @@
                 <span class="skill-level">{{ skill.level }}</span>
               </div>
               <div class="skill-bar">
-                <div
-                  class="skill-progress"
+                <div 
+                  class="skill-progress" 
                   :style="{ width: getSkillWidth(skill.level) }"
                 ></div>
               </div>
@@ -41,130 +37,122 @@
 </template>
 
 <script setup lang="ts">
-import { h } from "vue";
+import { h } from 'vue'
 
 interface Skill {
-  name: string;
-  level: string;
+  name: string
+  level: string
 }
 
 interface SkillCategory {
-  title: string;
-  icon: any;
-  skills: Skill[];
+  title: string
+  icon: any
+  skills: Skill[]
 }
 
-const CodeIcon = () =>
-  h(
-    "svg",
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "40",
-      height: "40",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      "stroke-width": "2",
-    },
-    [
-      h("polyline", { points: "16 18 22 12 16 6" }),
-      h("polyline", { points: "8 6 2 12 8 18" }),
-    ]
-  );
+const CodeIcon = () => h('svg', {
+  xmlns: 'http://www.w3.org/2000/svg',
+  width: '40',
+  height: '40',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '2'
+}, [
+  h('polyline', { points: '16 18 22 12 16 6' }),
+  h('polyline', { points: '8 6 2 12 8 18' })
+])
 
-const DatabaseIcon = () =>
-  h(
-    "svg",
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "40",
-      height: "40",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      "stroke-width": "2",
-    },
-    [
-      h("ellipse", { cx: "12", cy: "5", rx: "9", ry: "3" }),
-      h("path", { d: "M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" }),
-      h("path", { d: "M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" }),
-    ]
-  );
+const DatabaseIcon = () => h('svg', {
+  xmlns: 'http://www.w3.org/2000/svg',
+  width: '40',
+  height: '40',
+  viewBox: '0 0 24 24',
+  fill: 'none',
+  stroke: 'currentColor',
+  'stroke-width': '2'
+}, [
+  h('ellipse', { cx: '12', cy: '5', rx: '9', ry: '3' }),
+  h('path', { d: 'M21 12c0 1.66-4 3-9 3s-9-1.34-9-3' }),
+  h('path', { d: 'M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5' })
+])
 
 const skillsCategories: SkillCategory[] = [
   {
-    title: "Front-end",
+    title: 'Front-end',
     icon: CodeIcon,
     skills: [
-      { name: "HTML/CSS", level: "Expérimentée" },
-      { name: "JavaScript", level: "Expérimentée" },
-      { name: "Vue.js 3", level: "Expérimentée" },
-      { name: "Bootstrap", level: "Expérimentée" },
-      { name: "Sass", level: "Intermédiaire" },
-    ],
+      { name: 'HTML/CSS', level: 'Expérimentée' },
+      { name: 'JavaScript', level: 'Expérimentée' },
+      { name: 'Vue.js 3', level: 'Expérimentée' },
+      { name: 'Bootstrap', level: 'Expérimentée' },
+      { name: 'Sass', level: 'Intermédiaire' }
+    ]
   },
   {
-    title: "Back-end",
+    title: 'Back-end',
     icon: DatabaseIcon,
     skills: [
-      { name: "PHP", level: "Expérimentée" },
-      { name: "Symfony 6", level: "Expérimentée" },
-      { name: "C/C++", level: "Intermédiaire" },
-      { name: "Java", level: "Intermédiaire" },
-      { name: "Python", level: "Intermédiaire" },
-    ],
+      { name: 'PHP', level: 'Expérimentée' },
+      { name: 'Symfony 6', level: 'Expérimentée' },
+      { name: 'C/C++', level: 'Intermédiaire' },
+      { name: 'Java', level: 'Intermédiaire' },
+      { name: 'Python', level: 'Intermédiaire' }
+    ]
   },
   {
-    title: "Base de Données",
+    title: 'Base de Données',
     icon: DatabaseIcon,
     skills: [
-      { name: "MySQL", level: "Expérimentée" },
-      { name: "PostgreSQL", level: "Intermédiaire" },
-      { name: "PhpMyAdmin", level: "Expérimentée" },
-    ],
+      { name: 'MySQL', level: 'Expérimentée' },
+      { name: 'PostgreSQL', level: 'Intermédiaire' },
+      { name: 'PhpMyAdmin', level: 'Expérimentée' }
+    ]
   },
   {
-    title: "Gestion de Projets & Outils",
+    title: 'Gestion de Projets & Outils',
     icon: CodeIcon,
     skills: [
-      { name: "Git/GitHub", level: "Expérimentée" },
-      { name: "Scrum", level: "Intermédiaire" },
-      { name: "Netlify", level: "Intermédiaire" },
-    ],
+      { name: 'Git/GitHub', level: 'Expérimentée' },
+      { name: 'Scrum', level: 'Intermédiaire' },
+      { name: 'Netlify', level: 'Intermédiaire' }
+    ]
   },
   {
-    title: "Conception & CMS",
+    title: 'Conception & CMS',
     icon: CodeIcon,
     skills: [
-      { name: "Figma", level: "Expérimentée" },
-      { name: "WordPress", level: "Intermédiaire" },
-      { name: "Illustrator", level: "Intermédiaire" },
-    ],
+      { name: 'Figma', level: 'Expérimentée' },
+      { name: 'WordPress', level: 'Intermédiaire' },
+      { name: 'Illustrator', level: 'Intermédiaire' }
+    ]
   },
   {
-    title: "Réseau & Sécurité",
+    title: 'Réseau & Sécurité',
     icon: DatabaseIcon,
     skills: [
-      { name: "HTTPS/SSH", level: "Intermédiaire" },
-      { name: "Routage VLSM", level: "Intermédiaire" },
-      { name: "Firewalls", level: "Basique" },
-    ],
+      { name: 'HTTPS/SSH', level: 'Intermédiaire' },
+      { name: 'Routage VLSM', level: 'Intermédiaire' },
+      { name: 'Firewalls', level: 'Basique' }
+    ]
   },
   {
-    title: "Mobile",
+    title: 'Mobile',
     icon: CodeIcon,
-    skills: [{ name: "Android Studio", level: "Basique" }],
-  },
-];
+    skills: [
+      { name: 'Android Studio', level: 'Basique' }
+    ]
+  }
+]
 
 const getSkillWidth = (level: string): string => {
   const levels: Record<string, string> = {
-    Expérimentée: "90%",
-    Intermédiaire: "70%",
-    Basique: "50%",
-  };
-  return levels[level] || "50%";
-};
+    'Expérimentée': '90%',
+    'Intermédiaire': '70%',
+    'Basique': '50%'
+  }
+  return levels[level] || '50%'
+}
 </script>
 
 <style scoped>
@@ -195,7 +183,7 @@ const getSkillWidth = (level: string): string => {
 }
 
 .section-title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -222,7 +210,7 @@ const getSkillWidth = (level: string): string => {
 }
 
 .skill-category::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -306,7 +294,7 @@ const getSkillWidth = (level: string): string => {
 }
 
 .skill-progress::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

@@ -9,23 +9,15 @@
       <!-- Desktop Navigation -->
       <ul class="nav-links desktop-nav">
         <li v-for="link in navLinks" :key="link.id">
-          <a
-            :href="`#${link.id}`"
-            @click.prevent="scrollToSection(link.id)"
-            class="nav-link"
-          >
+          <a :href="`#${link.id}`" @click.prevent="scrollToSection(link.id)" class="nav-link">
             {{ link.label }}
           </a>
         </li>
       </ul>
 
       <!-- Mobile Menu Button -->
-      <button
-        class="mobile-menu-btn"
-        @click="toggleMobileMenu"
-        aria-label="Toggle menu"
-      >
-        <span :class="['hamburger', { active: isMobileMenuOpen }]"></span>
+      <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
+        <span :class="['hamburger', { 'active': isMobileMenuOpen }]"></span>
       </button>
     </div>
 
@@ -34,9 +26,9 @@
       <div v-if="isMobileMenuOpen" class="mobile-nav">
         <ul class="mobile-nav-links">
           <li v-for="link in navLinks" :key="link.id">
-            <a
-              :href="`#${link.id}`"
-              @click.prevent="handleMobileClick(link.id)"
+            <a 
+              :href="`#${link.id}`" 
+              @click.prevent="handleMobileClick(link.id)" 
               class="mobile-nav-link"
             >
               {{ link.label }}
@@ -49,49 +41,49 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const isScrolled = ref(false);
-const isMobileMenuOpen = ref(false);
+const isScrolled = ref(false)
+const isMobileMenuOpen = ref(false)
 
 const navLinks = [
-  { id: "about", label: "À propos" },
-  { id: "experience", label: "Expériences" },
-  { id: "projects", label: "Projets" },
-  { id: "contact", label: "Contact" },
-];
+  { id: 'about', label: 'À propos' },
+  { id: 'experience', label: 'Expériences' },
+  { id: 'projects', label: 'Projets' },
+  { id: 'contact', label: 'Contact' }
+]
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
-};
+  isScrolled.value = window.scrollY > 50
+}
 
 const scrollToSection = (id: string) => {
-  const element = document.getElementById(id);
+  const element = document.getElementById(id)
   if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
-};
+}
 
 const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
+  isMobileMenuOpen.value = !isMobileMenuOpen.value
+}
 
 const handleMobileClick = (id: string) => {
-  scrollToSection(id);
-  isMobileMenuOpen.value = false;
-};
+  scrollToSection(id)
+  isMobileMenuOpen.value = false
+}
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
@@ -120,7 +112,7 @@ onUnmounted(() => {
 }
 
 .logo {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   cursor: pointer;
@@ -145,8 +137,7 @@ onUnmounted(() => {
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -173,7 +164,7 @@ onUnmounted(() => {
 }
 
 .nav-link::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -212,7 +203,7 @@ onUnmounted(() => {
 
 .hamburger::before,
 .hamburger::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 30px;
   height: 2px;
