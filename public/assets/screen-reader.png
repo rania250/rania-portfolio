@@ -1,0 +1,63 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="icon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f0f0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#bg)"/>
+
+  <!-- Screen/Monitor -->
+  <rect x="50" y="60" width="180" height="120" rx="8" fill="#1a1a2e" stroke="#ffffff" stroke-width="2"/>
+  <rect x="60" y="70" width="160" height="100" rx="4" fill="#16213e"/>
+
+  <!-- Text lines on screen -->
+  <rect x="70" y="85" width="60" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="95" width="120" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="105" width="80" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="115" width="100" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="125" width="90" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="135" width="70" height="4" rx="2" fill="#00d4ff"/>
+  <rect x="70" y="145" width="110" height="4" rx="2" fill="#00d4ff"/>
+
+  <!-- Speaker icon -->
+  <g transform="translate(280, 80)">
+    <circle cx="30" cy="30" r="25" fill="url(#icon)" stroke="#667eea" stroke-width="2"/>
+    <path d="M20 25 L25 20 L25 40 L20 35 Z" fill="#667eea"/>
+    <path d="M15 22 Q12 25 15 28" stroke="#667eea" stroke-width="2" fill="none"/>
+    <path d="M15 18 Q10 25 15 32" stroke="#667eea" stroke-width="2" fill="none"/>
+    <path d="M15 14 Q8 25 15 36" stroke="#667eea" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- Keyboard -->
+  <rect x="50" y="200" width="300" height="60" rx="8" fill="#2d2d44" stroke="#ffffff" stroke-width="2"/>
+  <!-- Keys -->
+  <rect x="70" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="100" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="130" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="160" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="190" y="215" width="40" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="240" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="270" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+  <rect x="300" y="215" width="20" height="15" rx="2" fill="#4a4a6a"/>
+
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Lecteur d'Écran</text>
+  <text x="200" y="50" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" opacity="0.9">Accessibilité Numérique</text>
+
+  <!-- Tech badges -->
+  <rect x="250" y="100" width="50" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="275" y="112" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Python</text>
+
+  <rect x="250" y="125" width="70" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="285" y="137" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">APIs Windows</text>
+
+  <rect x="250" y="150" width="60" height="20" rx="10" fill="rgba(255,255,255,0.2)"/>
+  <text x="280" y="162" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">Threading</text>
+</svg>
