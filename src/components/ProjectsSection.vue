@@ -58,6 +58,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Lecteur d\'Écran Accessible',
+    description: 'Application complète d\'accessibilité numérique avec APIs Windows avancées, synthèse vocale temps réel et architecture modulaire 3-niveaux.',
+    tags: ['Python', 'APIs Windows', 'Threading', 'Accessibilité'],
+    image: '/assets/captureLecteruDecran.png',
+    github: 'https://github.com/rania250/Lecteur-d-cran-accessible-',
+    demo: 'https://github.com/rania250/Lecteur-d-cran-accessible-'
+  },
+  {
     title: 'Blog Application',
     description: 'Application web complète de blog avec système de gestion de contenu, authentification et interface dynamique.',
     tags: ['PHP', 'Symfony', 'Vue.js', 'Twig'],
