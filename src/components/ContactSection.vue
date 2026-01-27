@@ -90,9 +90,6 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <p class="footer-text">
-            © 2024 Rania Mamou. Tous droits réservés.
-          </p>
           <div class="footer-links">
             <a href="#about">À propos</a>
             <a href="#experience">Expériences</a>
