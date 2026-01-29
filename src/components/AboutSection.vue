@@ -11,7 +11,7 @@
           <p>
             <strong>Dynamique, responsable, créative et rigoureuse</strong>, je
             suis actuellement étudiante en Master 1 Informatique et Mobilité à
-            l'Université de Haute-Alsace Mulhouse[cite: 1, 4, 25, 26].
+            l'Université de Haute-Alsace Mulhouse.
             Passionnée par l'informatique dans toute sa diversité, j'explore et
             me perfectionne dans la
             <strong>conception d'applications full-stack</strong>, alliant
@@ -21,11 +21,10 @@
           <p>
             Forte d'une licence en Développement Web et Infographie et de
             certifications spécialisées (Vue.js 3, Symfony 6, JavaScript), je
-            maîtrise un large éventail de technologies modernes[cite: 31, 46,
-            47, 48]. Mon parcours polyvalent couvre le développement front-end
+            maîtrise un large éventail de technologies modernes. Mon parcours polyvalent couvre le développement front-end
             et back-end, la gestion de bases de données et les méthodologies
             agiles, me permettant d'appréhender les projets informatiques avec
-            une vision globale et structurée[cite: 35, 37, 39, 43].
+            une vision globale et structurée.
           </p>
 
           <p>
@@ -36,7 +35,7 @@
             pour mettre en pratique mes compétences et contribuer à des projets
             innovants. Mobile sur toute la France, je suis prête à mettre mon
             expertise technique et ma rigueur algorithmique au service de votre
-            équipe[cite: 3, 5, 52]!
+            équipe.
           </p>
           <div class="certifications">
             <h3>Formations Complémentaires (Udemy)</h3>
