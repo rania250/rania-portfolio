@@ -15,7 +15,7 @@
         </p>
 
         <div class="hero-buttons">
-          <a href="/cv-rania-mamou-ats.pdf" class="btn btn-primary" download>
+          <!-- <a href="/cv-rania-mamou-ats.pdf" class="btn btn-primary" download>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -30,7 +30,7 @@
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
             Télécharger CV
-          </a>
+          </a> -->
           <a
             href="#contact"
             @click.prevent="scrollToContact"
