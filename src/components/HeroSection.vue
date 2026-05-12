@@ -10,8 +10,8 @@
         </p>
         <p class="hero-description">
           Étudiante en Master 1 Informatique et Mobilité à l'Université de
-          Haute-Alsace Mulhouse. À la recherche d'une alternance ou stage de 3 à
-          4 mois en développement Full-Stack.
+          Haute-Alsace Mulhouse. À la recherche d'une alternance à partir
+          d’octobre 2026.
         </p>
 
         <div class="hero-buttons">
