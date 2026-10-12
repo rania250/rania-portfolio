@@ -28,7 +28,7 @@ const skillsCategories = [
   },
   {
     title: 'Front-end',
-    skills: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React', 'Vue.js 3'],
+    skills: ['HTML/CSS', 'JavaScript', 'Intégration web', 'Interfaces adaptatives'],
   },
   {
     title: 'Back-end',

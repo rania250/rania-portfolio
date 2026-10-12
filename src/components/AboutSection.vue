@@ -18,9 +18,9 @@
           <p>
             J’aime prendre part à toutes les étapes d’un projet : concevoir des
             API, structurer les données, intégrer des interfaces et automatiser
-            le déploiement. Je travaille notamment avec <strong>Spring Boot,
-            React, TypeScript et PostgreSQL</strong>, et je développe aussi avec
-            Symfony et Vue.js.
+            le déploiement. Mes projets m’ont permis d’explorer différents
+            langages et outils du développement web, du backend à l’interface
+            utilisateur.
           </p>
 
           <p>

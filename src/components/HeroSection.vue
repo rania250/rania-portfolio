@@ -90,7 +90,7 @@
           />
           <div class="hero-card">
             <span class="hero-card-icon">JS</span>
-            <span><strong>Full-Stack</strong><small>Java · Spring Boot · React</small></span>
+            <span><strong>Full-Stack</strong><small>Java · Spring Boot · Web</small></span>
           </div>
         </div>
       </div>
