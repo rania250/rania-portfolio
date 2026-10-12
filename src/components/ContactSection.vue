@@ -194,10 +194,13 @@ const handleSubmit = () => {
 
 .contact-section .contact-content {
   max-width: 900px;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .contact-section .contact-cards {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
 .section-header {
@@ -335,15 +338,17 @@ const handleSubmit = () => {
 }
 
 .contact-form-wrapper {
-  max-width: 600px;
+  width: 100%;
+  max-width: 760px;
   margin: 0 auto;
 }
 
 .contact-form {
-  padding: 3rem;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 35px;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  border: 1px solid #e1eae5;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .form-group {
@@ -458,7 +463,7 @@ const handleSubmit = () => {
   }
 
   .contact-form {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .footer-content {
