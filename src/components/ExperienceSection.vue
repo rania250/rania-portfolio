@@ -2,33 +2,17 @@
   <section id="experience" class="section experience-section">
     <div class="container">
       <div class="section-header">
-        <p class="section-subtitle">Explorez Mes</p>
-        <h2 class="section-title">Compétences</h2>
+        <p class="section-subtitle">Ma boîte à outils</p>
+        <h2 class="section-title">Compétences techniques</h2>
       </div>
 
       <div class="skills-grid">
         <div v-for="(category, index) in skillsCategories" :key="index" class="skill-category card">
-          <div class="category-icon">
-            <component :is="category.icon" />
-          </div>
           <h3 class="category-title">{{ category.title }}</h3>
           <div class="skills-list">
-            <div 
-              v-for="skill in category.skills" 
-              :key="skill.name" 
-              class="skill-item"
-            >
-              <div class="skill-info">
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-level">{{ skill.level }}</span>
-              </div>
-              <div class="skill-bar">
-                <div 
-                  class="skill-progress" 
-                  :style="{ width: getSkillWidth(skill.level) }"
-                ></div>
-              </div>
-            </div>
+            <span v-for="skill in category.skills" :key="skill" class="skill-chip">
+              {{ skill }}
+            </span>
           </div>
         </div>
       </div>
@@ -37,133 +21,64 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue'
-
-interface Skill {
-  name: string
-  level: string
-}
-
-interface SkillCategory {
-  title: string
-  icon: any
-  skills: Skill[]
-}
-
-const CodeIcon = () => h('svg', {
-  xmlns: 'http://www.w3.org/2000/svg',
-  width: '40',
-  height: '40',
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': '2'
-}, [
-  h('polyline', { points: '16 18 22 12 16 6' }),
-  h('polyline', { points: '8 6 2 12 8 18' })
-])
-
-const DatabaseIcon = () => h('svg', {
-  xmlns: 'http://www.w3.org/2000/svg',
-  width: '40',
-  height: '40',
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  'stroke-width': '2'
-}, [
-  h('ellipse', { cx: '12', cy: '5', rx: '9', ry: '3' }),
-  h('path', { d: 'M21 12c0 1.66-4 3-9 3s-9-1.34-9-3' }),
-  h('path', { d: 'M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5' })
-])
-
-const skillsCategories: SkillCategory[] = [
+const skillsCategories = [
+  {
+    title: 'Langages',
+    skills: ['Java', 'C/C++', 'JavaScript', 'PHP', 'Python'],
+  },
   {
     title: 'Front-end',
-    icon: CodeIcon,
-    skills: [
-      { name: 'HTML/CSS', level: 'Expérimentée' },
-      { name: 'JavaScript', level: 'Expérimentée' },
-      { name: 'Vue.js 3', level: 'Expérimentée' },
-      { name: 'Bootstrap', level: 'Expérimentée' },
-      { name: 'Sass', level: 'Intermédiaire' }
-    ]
+    skills: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React', 'Vue.js 3'],
   },
   {
     title: 'Back-end',
-    icon: DatabaseIcon,
-    skills: [
-      { name: 'PHP', level: 'Expérimentée' },
-      { name: 'Symfony 6', level: 'Expérimentée' },
-      { name: 'C/C++', level: 'Intermédiaire' },
-      { name: 'Java', level: 'Intermédiaire' },
-      { name: 'Python', level: 'Intermédiaire' }
-    ]
+    skills: ['Spring Boot', 'Symfony 6', 'Node.js', 'API REST'],
   },
   {
-    title: 'Base de Données',
-    icon: DatabaseIcon,
-    skills: [
-      { name: 'MySQL', level: 'Expérimentée' },
-      { name: 'PostgreSQL', level: 'Intermédiaire' },
-      { name: 'PhpMyAdmin', level: 'Expérimentée' }
-    ]
+    title: 'Bases de données',
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'Modélisation relationnelle'],
   },
   {
-    title: 'Gestion de Projets & Outils',
-    icon: CodeIcon,
-    skills: [
-      { name: 'Git/GitHub', level: 'Expérimentée' },
-      { name: 'Scrum', level: 'Intermédiaire' },
-      { name: 'Netlify', level: 'Intermédiaire' }
-    ]
+    title: 'DevOps & outils',
+    skills: ['Git / GitHub', 'Docker', 'Kubernetes', 'Scrum', 'Netlify', 'Jira'],
   },
   {
-    title: 'Conception & CMS',
-    icon: CodeIcon,
-    skills: [
-      { name: 'Figma', level: 'Expérimentée' },
-      { name: 'WordPress', level: 'Intermédiaire' },
-      { name: 'Illustrator', level: 'Intermédiaire' }
-    ]
+    title: 'Langues',
+    skills: ['Français : courant', 'Anglais : intermédiaire'],
   },
-  {
-    title: 'Réseau & Sécurité',
-    icon: DatabaseIcon,
-    skills: [
-      { name: 'HTTPS/SSH', level: 'Intermédiaire' },
-      { name: 'Routage VLSM', level: 'Intermédiaire' },
-      { name: 'Firewalls', level: 'Basique' }
-    ]
-  },
-  {
-    title: 'Mobile',
-    icon: CodeIcon,
-    skills: [
-      { name: 'Android Studio', level: 'Basique' }
-    ]
-  }
 ]
-
-const getSkillWidth = (level: string): string => {
-  const levels: Record<string, string> = {
-    'Expérimentée': '90%',
-    'Intermédiaire': '70%',
-    'Basique': '50%'
-  }
-  return levels[level] || '50%'
-}
 </script>
 
 <style scoped>
 .experience-section {
-  background: white;
+  background: #fff;
   position: relative;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-subtitle {
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+}
+
+.section-title {
+  color: var(--text-dark);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+}
+
+.section-title::after {
+  width: 52px;
+  height: 3px;
+  background: var(--accent-color);
 }
 
 .section-subtitle {
@@ -196,17 +111,52 @@ const getSkillWidth = (level: string): string => {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1rem;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .skill-category {
-  padding: 2.5rem;
-  transition: all 0.3s ease;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.category-icon {
+  display: none;
+}
+
+.skill-category::before {
+  display: none;
+}
+
+.category-title {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.skill-chip {
+  padding: 0.42rem 0.7rem;
+  border: 1px solid #dce9e3;
+  border-radius: 999px;
+  background: #f4f8f6;
+  color: #35545a;
+  font-size: 0.82rem;
+  font-weight: 500;
 }
 
 .skill-category::before {
@@ -320,7 +270,7 @@ const getSkillWidth = (level: string): string => {
 
 @media (max-width: 968px) {
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -341,5 +291,24 @@ const getSkillWidth = (level: string): string => {
   .skills-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.skill-category::before {
+  display: none;
+}
+
+.category-title {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-size: 1.15rem;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.55rem;
 }
 </style>

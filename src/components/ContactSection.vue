@@ -1,12 +1,16 @@
 <template>
   <div>
-    <section id="contact" class="section contact-section gradient-bg">
+    <section id="contact" class="section contact-section">
       <div class="container">
         <div class="section-header">
-          <p class="section-subtitle">Prendre Contact</p>
-          <h2 class="section-title">Contactez-moi</h2>
+          <p class="section-subtitle">Parlons de votre projet</p>
+          <h2 class="section-title">Me contacter</h2>
         </div>
 
+        <p class="contact-intro">
+          Vous recrutez une stagiaire développeuse Full-Stack ? Écrivez-moi,
+          je serai ravie d’échanger avec vous.
+        </p>
         <div class="contact-content">
           <div class="contact-cards">
             <a
@@ -140,10 +144,11 @@
         <div class="footer-content">
           <div class="footer-links">
             <a href="#about">À propos</a>
-            <a href="#experience">Expériences</a>
+            <a href="#experience">Compétences</a>
             <a href="#projects">Projets</a>
             <a href="#contact">Contact</a>
           </div>
+          <p class="footer-text">© {{ new Date().getFullYear() }} Rania Mamou</p>
         </div>
       </div>
     </footer>
@@ -166,9 +171,10 @@ const form = reactive<Form>({
 });
 
 const handleSubmit = () => {
-  // Créer un lien mailto avec les informations du formulaire
-  const subject = `Message de ${form.name}`;
-  const body = `${form.message}%0D%0A%0D%0ADe: ${form.name}%0D%0AEmail: ${form.email}`;
+  const subject = encodeURIComponent(`Message de ${form.name}`);
+  const body = encodeURIComponent(
+    `${form.message}\n\nDe : ${form.name}\nEmail : ${form.email}`,
+  );
   window.location.href = `mailto:mamou.rania@proton.me?subject=${subject}&body=${body}`;
 
   // Réinitialiser le formulaire
@@ -180,20 +186,54 @@ const handleSubmit = () => {
 
 <style scoped>
 .contact-section {
-  color: white;
+  color: var(--text-dark);
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    #667eea 0%,
-    #764ba2 50%,
-    #f093fb 100%
-  ) !important;
+  background: #edf5f1;
+}
+
+.contact-section .contact-content {
+  max-width: 900px;
+}
+
+.contact-section .contact-cards {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.contact-section .section-subtitle {
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+  text-shadow: none;
+}
+
+.contact-section .section-title {
+  color: var(--text-dark);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  text-shadow: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.contact-section .section-title::after {
+  width: 52px;
+  height: 3px;
+  background: var(--accent-color);
+  box-shadow: none;
+}
+
+.contact-intro {
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  text-align: center;
 }
 
 .section-subtitle {
@@ -238,60 +278,59 @@ const handleSubmit = () => {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
 .contact-card {
-  padding: 2.5rem;
+  padding: 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
-  color: white;
+  color: var(--text-dark);
   text-decoration: none;
   display: block;
-  border-radius: 30px;
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .card-glass {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
+  background: white;
+  border: 1px solid #e1eae5;
+  border-radius: 0.9rem;
 }
 
 .contact-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+  background: white;
+  box-shadow: var(--shadow-md);
 }
 
 .contact-icon {
-  width: 80px;
-  height: 80px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: #edf5f1;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: var(--primary-color);
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .contact-card:hover .contact-icon {
   transform: scale(1.1) rotate(5deg);
-  background: rgba(255, 255, 255, 0.4);
+  background: #dcefe7;
 }
 
 .contact-card h3 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
-  color: white;
+  color: var(--text-dark);
 }
 
 .contact-card p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-light);
   font-size: 1rem;
 }
 
@@ -315,69 +354,69 @@ const handleSubmit = () => {
   display: block;
   margin-bottom: 0.75rem;
   font-weight: 700;
-  font-size: 1.15rem;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  text-shadow: none;
   letter-spacing: 0.5px;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1.2rem 1.5rem;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.9);
-  color: #1e1e2e;
+  padding: 0.85rem 1rem;
+  border: 1px solid #d8e4de;
+  border-radius: 0.65rem;
+  background: #fff;
+  color: var(--text-dark);
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(30, 30, 46, 0.5);
+  color: #839397;
   font-weight: 400;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: white;
+  border-color: var(--primary-color);
   background: white;
-  color: #1e1e2e;
-  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  color: var(--text-dark);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
 }
 
 .btn-submit {
   width: 100%;
-  padding: 1.3rem 2rem;
-  background: white;
-  color: var(--primary-color);
+  padding: 0.9rem 1.2rem;
+  background: var(--primary-color);
+  color: white;
   border: none;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  border-radius: 0.7rem;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-submit:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  background: var(--secondary-color);
+  box-shadow: var(--shadow-md);
 }
 
 .footer {
-  background: var(--text-dark);
-  padding: 2rem 0;
+  background: #193238;
+  padding: 1.5rem 0;
   color: white;
 }
 
@@ -405,6 +444,10 @@ const handleSubmit = () => {
   transition: color 0.3s ease;
 }
 
+.footer-links a {
+  font-size: 0.88rem;
+}
+
 .footer-links a:hover {
   color: white;
 }
@@ -426,6 +469,10 @@ const handleSubmit = () => {
   .footer-links {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .contact-section .contact-cards {
+    grid-template-columns: 1fr;
   }
 }
 </style>

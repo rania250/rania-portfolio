@@ -1,36 +1,20 @@
 <template>
-  <section id="hero" class="hero-section gradient-bg">
-    <div class="particles"></div>
+  <section id="hero" class="hero-section">
     <div class="container hero-container">
       <div class="hero-content fade-in-up">
-        <h1 class="hero-title">Rania Mamou</h1>
-        <p class="hero-subtitle">
-          <span class="typing-text">{{ typedText }}</span>
-          <span class="cursor">|</span>
+        <p class="hero-eyebrow">
+          <span class="availability-dot"></span>
+          Recherche un stage de 6 mois · Février 2027
         </p>
+        <h1 class="hero-title">Rania Mamou</h1>
+        <p class="hero-subtitle">Développeuse Full-Stack Java</p>
         <p class="hero-description">
-          Étudiante en Master 1 Informatique et Mobilité à l'Université de
-          Haute-Alsace Mulhouse. À la recherche d'une alternance à partir
-          d’octobre 2026.
+          Étudiante en Master Informatique et Mobilité à l’Université de
+          Haute-Alsace, je conçois des applications web de bout en bout,
+          du backend Spring Boot à des interfaces modernes et accessibles.
         </p>
 
         <div class="hero-buttons">
-          <!-- <a href="/cv-rania-mamou-ats.pdf" class="btn btn-primary" download>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Télécharger CV
-          </a> -->
           <a
             href="#contact"
             @click.prevent="scrollToContact"
@@ -104,59 +88,30 @@
             alt="Rania Mamou"
             class="profile-image"
           />
+          <div class="hero-card">
+            <span class="hero-card-icon">JS</span>
+            <span><strong>Full-Stack</strong><small>Java · Spring Boot · React</small></span>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator" @click="scrollToAbout">
+    <button
+      class="scroll-indicator"
+      type="button"
+      aria-label="Faire défiler jusqu’à la section À propos"
+      @click="scrollToAbout"
+    >
       <div class="mouse">
         <div class="wheel"></div>
       </div>
       <p>Scroll</p>
-    </div>
+    </button>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
-const typedText = ref("");
-const texts = [
-  "Développeuse Full-Stack",
-  "Étudiante en Master Informatique",
-  "Passionnée de Technologie",
-  "En recherche d'alternance",
-];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-const typeText = () => {
-  const currentText = texts[textIndex] || "";
-
-  if (isDeleting) {
-    typedText.value = currentText.substring(0, charIndex - 1);
-    charIndex--;
-  } else {
-    typedText.value = currentText.substring(0, charIndex + 1);
-    charIndex++;
-  }
-
-  let typeSpeed = isDeleting ? 50 : 100;
-
-  if (!isDeleting && charIndex === currentText.length) {
-    typeSpeed = 2000;
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    textIndex = (textIndex + 1) % texts.length;
-    typeSpeed = 500;
-  }
-
-  setTimeout(typeText, typeSpeed);
-};
-
 const scrollToContact = () => {
   const element = document.getElementById("contact");
   if (element) {
@@ -171,67 +126,194 @@ const scrollToAbout = () => {
   }
 };
 
-onMounted(() => {
-  typeText();
-});
 </script>
 
 <style scoped>
 .hero-section {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding-top: 80px;
+  min-height: min(820px, 100vh);
+  padding: 7.5rem 0 5rem;
+  background:
+    radial-gradient(ellipse at 82% 25%, rgba(217, 242, 236, 0.9), transparent 38%),
+    linear-gradient(135deg, #f7faf8 0%, #eef5f1 100%);
 }
 
-.gradient-bg {
-  background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+.hero-section .hero-container {
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 7vw, 6rem);
 }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.hero-section .hero-content {
+  color: var(--text-dark);
 }
 
-.particles {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid #cfe4db;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--secondary-color);
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
-.particles::before,
-.particles::after {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
+.availability-dot {
+  width: 0.55rem;
+  height: 0.55rem;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  animation: float 6s ease-in-out infinite;
+  background: #3e9a71;
+  box-shadow: 0 0 0 4px rgba(62, 154, 113, 0.13);
 }
 
-.particles::before {
-  top: -100px;
-  left: -100px;
-  animation-delay: 0s;
+.hero-section .hero-title {
+  margin-bottom: 0.4rem;
+  color: var(--text-dark);
+  font-size: clamp(3.3rem, 7vw, 5.7rem);
+  letter-spacing: -0.065em;
+  -webkit-text-fill-color: currentColor;
 }
 
-.particles::after {
-  bottom: -100px;
-  right: -100px;
-  animation-delay: 3s;
+.hero-section .hero-subtitle {
+  min-height: 0;
+  margin-bottom: 1.25rem;
+  color: var(--primary-color);
+  font-size: clamp(1.4rem, 3vw, 2.15rem);
+  font-weight: 600;
+}
+
+.hero-section .hero-description {
+  max-width: 590px;
+  margin-bottom: 1.8rem;
+  color: var(--text-light);
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+.hero-section .hero-buttons {
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-section .btn {
+  border-radius: 0.7rem;
+  padding: 0.9rem 1.25rem;
+}
+
+.hero-section .btn-secondary {
+  color: var(--text-dark);
+  border: 1px solid #cedbd6;
+}
+
+.hero-section .btn-secondary:hover {
+  background: #edf7f3;
+  color: var(--primary-color);
+}
+
+.hero-section .social-link {
+  width: 42px;
+  height: 42px;
+  background: #e4efea;
+  color: var(--secondary-color);
+  box-shadow: none;
+}
+
+.hero-section .social-link:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.hero-section .hero-image {
+  width: 100%;
+  animation: none;
+}
+
+.hero-section .image-container {
+  max-width: 390px;
+}
+
+.hero-section .glow-effect {
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.16) 0%, transparent 70%);
+}
+
+.hero-section .profile-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 0.9;
+  object-fit: cover;
+  border: 10px solid white;
+  border-radius: 48% 48% 1.5rem 1.5rem;
+  box-shadow: 0 24px 60px rgba(25, 50, 56, 0.16);
+  animation: none;
+}
+
+.hero-card {
+  position: absolute;
+  right: -1rem;
+  bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e7eeeb;
+  border-radius: 0.85rem;
+  background: white;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-card-icon {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border-radius: 0.7rem;
+  background: #eaf5f1;
+  color: var(--primary-color);
+}
+
+.hero-card strong,
+.hero-card small {
+  display: block;
+}
+
+.hero-card strong {
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.hero-card small {
+  margin-top: 0.1rem;
+  color: var(--text-light);
+  font-size: 0.72rem;
+}
+
+.hero-section .scroll-indicator {
+  bottom: 1.25rem;
+  color: var(--text-light);
+  border: 0;
+  background: transparent;
+  font: inherit;
+}
+
+.hero-section .mouse {
+  width: 23px;
+  height: 37px;
+  border-color: #9bb1a9;
+}
+
+.hero-section .wheel {
+  background: var(--primary-color);
+}
+
+.hero-section .scroll-indicator p {
+  font-size: 0.75rem;
 }
 
 .hero-container {
@@ -247,12 +329,6 @@ onMounted(() => {
   color: white;
 }
 
-.greeting {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
 .hero-title {
   font-size: clamp(3rem, 6vw, 5rem);
   margin-bottom: 1rem;
@@ -266,28 +342,6 @@ onMounted(() => {
   margin-bottom: 1.5rem;
   font-weight: 600;
   min-height: 3rem;
-}
-
-.typing-text {
-  background: linear-gradient(135deg, #fee140 0%, #fa709a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cursor {
-  animation: blink 1s infinite;
-}
-
-@keyframes blink {
-  0%,
-  50% {
-    opacity: 1;
-  }
-  51%,
-  100% {
-    opacity: 0;
-  }
 }
 
 .hero-description {
@@ -406,30 +460,6 @@ onMounted(() => {
   }
 }
 
-.profile-image {
-  width: 100%;
-  height: auto;
-  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: morphing 8s ease-in-out infinite;
-}
-
-@keyframes morphing {
-  0%,
-  100% {
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  }
-  25% {
-    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-  }
-  50% {
-    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-  }
-  75% {
-    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-  }
-}
-
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -492,11 +522,11 @@ onMounted(() => {
   }
 
   .hero-content {
-    order: 2;
+    order: 1;
   }
 
   .hero-image {
-    order: 1;
+    order: 2;
     max-width: 400px;
     margin: 0 auto 2rem;
   }
@@ -507,6 +537,38 @@ onMounted(() => {
 
   .social-links {
     justify-content: center;
+  }
+
+  .hero-section {
+    padding-bottom: 6rem;
+  }
+
+  .hero-section .hero-container {
+    gap: 2rem;
+  }
+
+  .hero-eyebrow {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-card {
+    right: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section .hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section .hero-image {
+    max-width: 290px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-section .hero-title {
+    font-size: clamp(3rem, 14vw, 4rem);
   }
 }
 </style>

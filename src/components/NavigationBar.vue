@@ -1,10 +1,10 @@
 <template>
-  <nav :class="['navbar', { 'navbar-scrolled': isScrolled }]">
+  <nav :class="['navbar', { 'navbar-scrolled': isScrolled }]" aria-label="Navigation principale">
     <div class="container navbar-content">
-      <div class="logo" @click="scrollToTop">
+      <a class="logo" href="#hero" @click.prevent="scrollToTop" aria-label="Rania Mamou — accueil">
         <span class="logo-text">Rania Mamou</span>
         <span class="logo-dot">.</span>
-      </div>
+      </a>
 
       <!-- Desktop Navigation -->
       <ul class="nav-links desktop-nav">
@@ -16,7 +16,7 @@
       </ul>
 
       <!-- Mobile Menu Button -->
-      <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Toggle menu">
+      <button class="mobile-menu-btn" @click="toggleMobileMenu" :aria-expanded="isMobileMenuOpen" aria-label="Ouvrir ou fermer le menu">
         <span :class="['hamburger', { 'active': isMobileMenuOpen }]"></span>
       </button>
     </div>
@@ -48,7 +48,7 @@ const isMobileMenuOpen = ref(false)
 
 const navLinks = [
   { id: 'about', label: 'À propos' },
-  { id: 'experience', label: 'Expériences' },
+  { id: 'experience', label: 'Compétences' },
   { id: 'projects', label: 'Projets' },
   { id: 'contact', label: 'Contact' }
 ]
@@ -93,13 +93,15 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   transition: all 0.3s ease;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(25, 50, 56, 0.07);
 }
 
 .navbar-scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   padding: 1rem 0;
@@ -122,18 +124,15 @@ onUnmounted(() => {
 }
 
 .logo-text {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-dark);
   transition: all 0.3s ease;
 }
 
 .logo-dot {
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-size: 2rem;
   line-height: 0.5;
-  animation: pulse 2s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes pulse {
@@ -150,13 +149,13 @@ onUnmounted(() => {
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: 2rem;
   align-items: center;
 }
 
 .nav-link {
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.92rem;
   color: var(--text-dark);
   position: relative;
   padding: 0.5rem 0;
@@ -170,7 +169,7 @@ onUnmounted(() => {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary-gradient);
+  background: var(--primary-color);
   transition: width 0.3s ease;
 }
 

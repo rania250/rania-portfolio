@@ -2,40 +2,34 @@
   <section id="about" class="section about-section">
     <div class="container">
       <div class="section-header">
-        <p class="section-subtitle">Découvrez-en plus</p>
-        <h2 class="section-title">À propos de moi</h2>
+        <p class="section-subtitle">Mon parcours</p>
+        <h2 class="section-title">À propos</h2>
       </div>
 
       <div class="about-content">
         <div class="about-text">
           <p>
-            <strong>Dynamique, responsable, créative et rigoureuse</strong>, je
-            suis actuellement étudiante en Master 1 Informatique et Mobilité à
-            l'Université de Haute-Alsace Mulhouse.
-            Passionnée par l'informatique dans toute sa diversité, j'explore et
-            me perfectionne dans la
-            <strong>conception d'applications full-stack</strong>, alliant
-            performance technique et expérience utilisateur fluide.
+            Étudiante en <strong>Master Informatique et Mobilité</strong> à
+            l’Université de Haute-Alsace, je suis développeuse Full-Stack avec
+            un intérêt particulier pour Java, Spring Boot et la conception
+            d’applications web utiles.
           </p>
 
           <p>
-            Forte d'une licence en Développement Web et Infographie et de
-            certifications spécialisées (Vue.js 3, Symfony 6, JavaScript), je
-            maîtrise un large éventail de technologies modernes. Mon parcours polyvalent couvre le développement front-end
-            et back-end, la gestion de bases de données et les méthodologies
-            agiles, me permettant d'appréhender les projets informatiques avec
-            une vision globale et structurée.
+            J’aime prendre part à toutes les étapes d’un projet : concevoir des
+            API, structurer les données, intégrer des interfaces et automatiser
+            le déploiement. Je travaille notamment avec <strong>Spring Boot,
+            React, TypeScript et PostgreSQL</strong>, et je développe aussi avec
+            Symfony et Vue.js.
           </p>
 
           <p>
             <strong
-              >Je recherche actuellement un stage de 4 mois à partir de mai
-              2026</strong
+              >Je recherche un stage de 6 mois à partir de février 2027</strong
             >
-            pour mettre en pratique mes compétences et contribuer à des projets
-            innovants. Mobile sur toute la France, je suis prête à mettre mon
-            expertise technique et ma rigueur algorithmique au service de votre
-            équipe.
+            pour contribuer à une équipe de développement et progresser sur
+            des projets concrets. Mobile partout en France, je suis disponible
+            pour échanger sur vos besoins.
           </p>
           <div class="certifications">
             <h3>Formations Complémentaires (Udemy)</h3>
@@ -217,6 +211,13 @@ interface Education {
 
 const education: Education[] = [
   {
+    school: "Université de Haute-Alsace",
+    degree: "Master 2 - Informatique et Mobilité",
+    location: "Mulhouse, France",
+    date: "Sept 2026 - Juin 2027",
+    logo: "/assets/uha-mulhouse.png",
+  },
+  {
     school: "Université de Haute-Alsace Mulhouse",
     degree: "Master 1 - Informatique et Mobilité",
     location: "Mulhouse, France",
@@ -225,9 +226,9 @@ const education: Education[] = [
   },
   {
     school: "La Rochelle Université",
-    degree: "Licence 2 - Science, Technologie & Santé, Option Informatique",
+    degree: "Licence 2 - Informatique",
     location: "La Rochelle, France",
-    date: "Sept 2024 - Juin 2025",
+    date: "Sept 2023 - Juin 2025",
     logo: "/assets/LaRochelleUniversitéHD-fotor-2024022204730.png",
   },
   {
@@ -256,6 +257,27 @@ const education: Education[] = [
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-subtitle {
+  color: var(--primary-color);
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+}
+
+.section-title {
+  color: var(--text-dark);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+}
+
+.section-title::after {
+  width: 52px;
+  height: 3px;
+  background: var(--accent-color);
 }
 
 .section-subtitle {
@@ -299,10 +321,40 @@ const education: Education[] = [
   line-height: 1.9;
 }
 
+.about-text p {
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.about-text strong {
+  color: var(--text-dark);
+}
+
+.about-section .certifications {
+  background: #edf5f1;
+  border-left-color: var(--primary-color);
+  border-radius: 0.85rem;
+}
+
+.about-section .certifications {
+  border-left-color: var(--primary-color);
+}
+
+.about-section .certifications h3,
+.about-section .education-info h3 {
+  color: var(--text-dark);
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.about-section .certifications h3 {
+  font-size: 1.1rem;
+}
+
 .certifications {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: rgba(102, 126, 234, 0.05);
+  background: #edf5f1;
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--primary-color);
 }
@@ -336,7 +388,7 @@ const education: Education[] = [
 
 .certifications li a:hover {
   color: var(--primary-color);
-  background: rgba(102, 126, 234, 0.1);
+  background: #e3f0ea;
   transform: translateX(5px);
 }
 
@@ -360,13 +412,15 @@ const education: Education[] = [
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--primary-gradient);
+  background: #cfe4db;
 }
 
 .timeline-item {
   position: relative;
   padding-left: 60px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .timeline-dot {
@@ -376,15 +430,15 @@ const education: Education[] = [
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--primary-gradient);
+  background: var(--primary-color);
   box-shadow:
     0 0 0 4px var(--bg-light),
-    0 0 0 8px rgba(102, 126, 234, 0.2);
+    0 0 0 8px rgba(15, 118, 110, 0.12);
   z-index: 1;
 }
 
 .timeline-content {
-  padding: 1.5rem;
+  padding: 1rem 1.1rem;
 }
 
 .education-header {
@@ -394,27 +448,23 @@ const education: Education[] = [
 }
 
 .school-logo {
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
-  border-radius: var(--radius-md);
+  border-radius: 0.7rem;
   background: white;
   padding: 0.5rem;
   box-shadow: var(--shadow-sm);
 }
 
 .education-info h3 {
-  font-size: 1.4rem;
+  font-size: 1.05rem;
   color: var(--text-dark);
   margin-bottom: 0.5rem;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .education-info h4 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-light);
   margin-bottom: 1rem;
@@ -481,5 +531,24 @@ const education: Education[] = [
   .education-info h4 {
     font-size: 0.9rem;
   }
+}
+
+.about-section .section-header {
+  margin-bottom: 3rem;
+}
+
+.about-section .section-subtitle {
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+}
+
+.about-section .section-title {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+}
+
+.about-section .section-title::after {
+  width: 52px;
+  height: 3px;
+  background: var(--accent-color);
 }
 </style>
